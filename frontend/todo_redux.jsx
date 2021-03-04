@@ -1,6 +1,10 @@
-
+import configureStore from './store/store';
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
-  root.innerHTML = '<h1>Todos App</h1>';
+
+  const store = configureStore();
+  window.store = store;
+
+  // root.innerHTML = '<h1>Todos App</h1>';
 })
