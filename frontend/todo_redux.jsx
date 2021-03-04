@@ -1,12 +1,14 @@
 import configureStore from './store/store';
-import { receiveTodos, receiveTodo } from './actions/todo_actions';
+import { receiveTodos, receiveTodo, removeTodo } from './actions/todo_actions';
+import { receiveSteps, receiveStep, removeStep } from './actions/step_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("root");
-
   const store = configureStore();
   window.store = store;
   window.receiveTodos = receiveTodos;
   window.receiveTodo = receiveTodo;
-  // root.innerHTML = '<h1>Todos App</h1>';
+  window.removeTodo = removeTodo;
+  window.receiveSteps = receiveSteps;
+  window.receiveStep = receiveStep;
+  window.removeStep = removeStep;
 })
