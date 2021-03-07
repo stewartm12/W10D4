@@ -1,18 +1,36 @@
 import React from 'react';
+import TodoDetailView from './todo_detail_view'
 
-function TodoListItem({todo, removeTodo, receiveTodo}) {
-  // debugger
-  const flipped = Object.assign({}, todo, {done: !todo.done});
-  return(
+class TodoListItem extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      detail: false,
+    }
+    this.handleView = this.handleView.bind(this);
+  }
+  
+  handleView(e) {
+    this.setState({
+      detail: !this.state.detail,
+    })
+  }
+
+  render() {
+    const { todo, removeTodo, receiveTodo } = this.props;
+    const flipped = Object.assign({}, todo, { done: !todo.done });
+    return (
       <li>
-        <h3>{todo.title}</h3>
-        <button onClick={() => removeTodo(todo)}>Remove Todo</button>
-        <button onClick={() => receiveTodo(flipped)}>{todo.done ? "Undo" : "Done"}</button>
-        <p>status: {todo.done ? 'Done' : 'Not Done'}</p>
-        <p>{todo.body}</p>
+        <div className="gettogetherdarnit">
+          <h3 onClick={this.handleView}>{todo.title}</h3>
+          <button onClick={() => receiveTodo(flipped)}>{todo.done ? "Undo" : "Done"}</button>
+        </div>
+        {this.state.detail ? <TodoDetailView todo={todo} removeTodo={removeTodo}/> : <></>}
       </li>
     )
+  }
 }
 
 
 export default TodoListItem;
+
