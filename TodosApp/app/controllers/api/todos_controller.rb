@@ -4,7 +4,8 @@ class Api::TodosController < ApplicationController
   end
 
   def index
-    render json: Todo.all
+    @todos = Todo.all
+    render json: @todos
   end
 
   def create

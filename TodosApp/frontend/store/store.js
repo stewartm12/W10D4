@@ -1,24 +1,13 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers/root_reducer';
+import {thunk} from '../middleware/thunk';
+// import thunk from 'redux-thunk';
 
-const configureStore = () => {
-
-    let store;
-    if (localStorage.getItem("stateOfStore")) {
-        store = createStore(rootReducer, 
-            JSON.parse(localStorage.getItem("stateOfStore"))
-            );
-    } else {
-        store = createStore(rootReducer);
-    }
-
-    store.subscribe(()=>{
-        localStorage.setItem("stateOfStore", 
-        JSON.stringify(store.getState())
-        )
-    });
-
-    return store;
+const configureStore = (preLoadedState = {}) => {
+    return createStore(rootReducer,
+            preLoadedState,
+            applyMiddleware(thunk)
+    );
 };
 
 export default configureStore;

@@ -44,13 +44,14 @@ class TodoForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.receiveTodo(this.state);
-        this.setState({
-            id: uniqueId(),
-            title: "",
-            body: "",
-            done: false
-        });
+        this.props.createTodo(this.state).then(
+            () => this.setState({
+                id: uniqueId(),
+                title: "",
+                body: "",
+                done: false
+            })
+        )
     }
 
     render() {
