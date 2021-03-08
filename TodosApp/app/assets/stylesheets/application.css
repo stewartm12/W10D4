@@ -13,3 +13,43 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgb(141, 215, 255);
+}
+
+label {
+    display: flex;
+}
+
+h3 {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+input {
+    margin-left: 5px;
+}
+
+div {
+    margin: 5px;
+}
+
+.gettogetherdarnit {
+    display: flex;
+}
+
+button {
+    padding-top: 2px;
+}
+
+form {
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    width: 300px;
+    padding: 20px;
+}
